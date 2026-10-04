@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Schneider Electric Transformation Roadmap | Team</title>
+    <style>
+      :root {
+        --navy: #102b43;
+        --ink: #183247;
+        --muted: #5c7181;
+        --teal: #07828e;
+        --mint: #dff2ef;
+        --line: #dbe6eb;
+        --paper: #f4f8f9;
+        --gold: #e3ae50;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          16px/1.6 Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          sans-serif;
+      }
+      .hero {
+        background: var(--navy);
+        color: #fff;
+        padding: 54px max(7vw, 24px) 48px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        width: 340px;
+        height: 340px;
+        border: 1px solid #ffffff24;
+        border-radius: 50%;
+        right: 7%;
+        top: -160px;
+        box-shadow:
+          0 0 0 35px #ffffff09,
+          0 0 0 75px #ffffff06;
+      }
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.17em;
+        font-size: 11px;
+        color: #80d1ce;
+        font-weight: 800;
+      }
+      .hero h1 {
+        font-size: clamp(34px, 5vw, 58px);
+        line-height: 1.05;
+        letter-spacing: -0.05em;
+        max-width: 780px;
+        margin: 16px 0;
+      }
+      .hero p {
+        max-width: 710px;
+        color: #cad7df;
+        margin: 0;
+        font-size: 17px;
+      }
+      .container {
+        max-width: 1120px;
+        margin: auto;
+        padding: 34px 24px 58px;
+      }
+      .section-title {
+        font-size: 23px;
+        letter-spacing: -0.03em;
+        margin: 0 0 16px;
+      }
+      .team {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 38px;
+      }
+      .person {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        padding: 16px;
+      }
+      .avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        background: var(--mint);
+        color: var(--teal);
+        font-weight: 800;
+        display: grid;
+        place-items: center;
+        margin-bottom: 12px;
+      }
+      .person h3 {
+        font-size: 15px;
+        margin: 0;
+      }
+      .role {
+        color: var(--teal);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 800;
+      }
+      .person p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.55;
+        margin: 8px 0 0;
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 38px;
+      }
+      .card {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 22px;
+      }
+      .card h2 {
+        font-size: 19px;
+        margin: 0 0 10px;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+      .benefits {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .benefits li {
+        padding: 11px 0;
+        border-top: 1px solid #edf1f3;
+        font-size: 14px;
+      }
+      .benefits a {
+        font-weight: 800;
+        color: var(--teal);
+        text-decoration: none;
+      }
+      .artifacts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 38px;
+      }
+      .artifact {
+        background: var(--navy);
+        color: white;
+        border-radius: 13px;
+        padding: 18px;
+        text-decoration: none;
+        transition: transform 0.15s;
+      }
+      .artifact:hover {
+        transform: translateY(-2px);
+      }
+      .artifact b {
+        display: block;
+        font-size: 16px;
+      }
+      .artifact span {
+        font-size: 12px;
+        color: #bfd0d9;
+      }
+      .novelty {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--gold);
+        border-radius: 12px;
+        padding: 22px;
+      }
+      .novelty h2 {
+        margin: 0 0 7px;
+        font-size: 19px;
+      }
+      .novelty p {
+        color: #405767;
+        margin: 0;
+      }
+      .todo {
+        background: #fff7df;
+        color: #77570e;
+        border-radius: 8px;
+        padding: 10px 12px;
+        font-size: 12px;
+        margin-top: 14px;
+      }
+      .footer {
+        color: var(--muted);
+        font-size: 11px;
+        margin-top: 26px;
+      }
+      @media (max-width: 780px) {
+        .team {
+          grid-template-columns: 1fr 1fr;
+        }
+        .grid2 {
+          grid-template-columns: 1fr;
+        }
+        .artifacts {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding-top: 40px;
+        }
+      }
+      @media (max-width: 480px) {
+        .team {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="eyebrow">Transformation planning · Team project</div>
+      <h1>Turning AI ambition into an executable roadmap.</h1>
+      <p>
+        We connect Schneider Electric's AI transformation initiatives to the
+        dependencies, decision rights, and review signals leaders need to manage
+        the work.
+      </p>
+    </header>
+    <main class="container">
+      <section>
+        <h2 class="section-title">The team</h2>
+        <div class="team">
+          <article class="person">
+            <div class="avatar">A</div>
+            <h3>[Member A name]</h3>
+            <div class="role">Roadmap Sequencer</div>
+            <p>
+              [Add 2–3 sentences: relevant experience, perspective brought to
+              the case, and ownership of the Crawl/Walk/Run roadmap.]
+            </p>
+          </article>
+          <article class="person">
+            <div class="avatar">B</div>
+            <h3>[Member B name]</h3>
+            <div class="role">Governance Designer</div>
+            <p>
+              [Add 2–3 sentences: relevant experience, perspective brought to
+              the case, and ownership of the decision-rights RACI.]
+            </p>
+          </article>
+          <article class="person">
+            <div class="avatar">C</div>
+            <h3>[Member C name]</h3>
+            <div class="role">Dashboard Designer</div>
+            <p>
+              [Add 2–3 sentences: relevant experience, perspective brought to
+              the case, and ownership of the quarterly review dashboard.]
+            </p>
+          </article>
+          <article class="person">
+            <div class="avatar">D</div>
+            <h3>[Member D name]</h3>
+            <div class="role">Site Editor</div>
+            <p>
+              [Add 2–3 sentences: relevant experience, perspective brought to
+              the case, and ownership of evidence checks and the team site.]
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="grid2">
+        <article class="card">
+          <h2>Who this is for</h2>
+          <p>
+            <b>The COO of a global industrial technology company</b> who has
+            been asked to review an AI transformation portfolio at a quarterly
+            business review and decide which capabilities are ready to scale,
+            which pilots need attention, and what governance decisions must be
+            made next.
+          </p>
+        </article>
+        <article class="card">
+          <h2>What the work helps them do</h2>
+          <ul class="benefits">
+            <li>
+              See which capability must be in place before a pilot advances.
+              <a href="roadmap.html">Roadmap →</a>
+            </li>
+            <li>
+              Find the single role accountable for funding, architecture, and
+              data-policy calls. <a href="raci.html">RACI →</a>
+            </li>
+            <li>
+              Spot a gap between pilot performance and readiness to scale.
+              <a href="dashboard.html">Dashboard →</a>
+            </li>
+            <li>
+              Bring specific scale, funding, and standards decisions to the next
+              review. <a href="dashboard.html#decisions">QBR decisions →</a>
+            </li>
+          </ul>
+        </article>
+      </section>
+      <section>
+        <h2 class="section-title">Explore the work</h2>
+        <div class="artifacts">
+          <a class="artifact" href="roadmap.html"
+            ><b>Transformation roadmap ↗</b
+            ><span>Crawl / Walk / Run · dependencies and sequencing</span></a
+          ><a class="artifact" href="raci.html"
+            ><b>Governance RACI ↗</b
+            ><span>Recurring decisions · accountable owners</span></a
+          ><a class="artifact" href="dashboard.html"
+            ><b>QBR dashboard ↗</b
+            ><span>Phase metrics · quarterly decisions</span></a
+          >
+        </div>
+      </section>
+      <section class="novelty">
+        <h2>What we added</h2>
+        <p>
+          We treated Schneider Electric's announced initiatives as evidence for
+          capabilities, then made our sequencing logic explicit where the public
+          record does not establish a direct dependency. In particular, we label
+          the Open Talent Market to Industrial Copilot and product-data
+          digitization to sustainability reporting links as our interpretation.
+          We also distinguish a capability that scales from a single product
+          that scales: Resource Advisor+ and EcoStruxure IT are separate
+          products, so our Run phase describes the expansion of connected AI and
+          sustainability capabilities. The dashboard is designed around
+          leadership decisions, not a list of launches. It separates readiness
+          and adoption signals from realized outcomes and surfaces the funding,
+          architecture, and scale decisions that the RACI assigns to named
+          roles.
+        </p>
+        <div class="todo">
+          Team check before publishing: keep only claims everyone can support
+          from the final roadmap, RACI, dashboard, and original sources. Add any
+          specific industry experience your team actually contributed.
+        </div>
+      </section>
+      <footer class="footer">
+        Course group project · Schneider Electric case · [Course / section] ·
+        [Term]
+      </footer>
+    </main>
+  </body>
+</html>
