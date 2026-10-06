@@ -147,112 +147,74 @@ a {
   .wrap {
     padding: 20px 12px;
   }
-}/* Larger, clearer presentation layout */
+} /* Simple, balanced layout */
 body {
-  font-size: 20px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .wrap {
-  max-width: 1500px;
-  padding: 28px;
+  max-width: 1280px;
+  padding: 28px 24px;
 }
 
 h1 {
-  font-size: 44px;
-}
-
-.eyebrow {
-  font-size: 18px;
-}
-
-.intro,
-.legend {
-  font-size: 20px;
-}
-
-/* Clear table with aligned columns */
-table {
-  width: 100%;
-  table-layout: fixed;
+  font-size: 32px;
 }
 
 th,
 td {
-  font-size: 20px;
-  padding: 20px 12px;
+  padding: 14px 10px;
+  font-size: 16px;
   text-align: center;
-  overflow-wrap: break-word;
+  vertical-align: middle;
+}
+
+th {
+  background: #edf8ef;
+  line-height: 1.4;
 }
 
 th:first-child,
 td:first-child {
-  width: 32%;
+  width: 30%;
   text-align: left;
 }
 
-th {
-  font-size: 20px;
-  line-height: 1.35;
-}
-
-.decision b {
-  font-size: 21px;
+th small {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .decision span {
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 14px;
 }
 
 td.mark {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 700;
 }
 
-/* One explanation per row for easy reading */
 .rationales {
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
-.why {
-  padding: 24px 28px;
-}
-
 .why h3 {
-  font-size: 25px;
-  margin-bottom: 12px;
+  font-size: 18px;
 }
 
-.why p,
-.review {
-  font-size: 20px;
-}
-
-.foot {
+.why p {
   font-size: 16px;
 }
 
 @media (max-width: 760px) {
-  .wrap {
-    padding: 16px;
+  .rationales {
+    grid-template-columns: 1fr;
   }
-
-  h1 {
-    font-size: 32px;
-  }
-
-  table {
-    table-layout: auto;
-  }
-
-  th,
-  td {
-    font-size: 17px;
-    padding: 14px 10px;
-  }
-} </style></head><body><main class="wrap"><header class="top"><div><div class="eyebrow">Decision rights · Schneider Electric</div><h1>Governance RACI</h1><p>Six recurring decisions created by the AI transformation portfolio.</p></div><nav class="nav"><a href="index.html">Team</a><a href="roadmap.html">Roadmap</a><a href="dashboard.html">QBR Dashboard</a></nav></header>
+}/style></head><body><main class="wrap"><header class="top"><div><div class="eyebrow">Decision rights · Schneider Electric</div><h1>Governance RACI</h1><p>Six recurring decisions created by the AI transformation portfolio.</p></div><nav class="nav"><a href="index.html">Team</a><a href="roadmap.html">Roadmap</a><a href="dashboard.html">QBR Dashboard</a></nav></header>
 <div class="intro"><b>R</b> Responsible · does the work. <b>A</b> Accountable · owns the outcome and final decision. <b>C</b> Consulted before the decision. <b>I</b> Informed after the decision. Each row has exactly one Accountable role. Role titles and named leaders are taken from the group's supplied case draft and should be checked against source dates and company structure.</div>
 <div class="table-wrap"><table><thead><tr><th>Recurring governance decision</th><th>CEO<br>Olivier Blum</th><th>CFO<br>Nathan Fast</th><th>Chief Digital Officer<br>Peter Weckesser</th><th>Chief AI Officer<br>Philippe Rambach</th><th>EVP, Industrial Automation<br>Gwenaelle Huet</th><th>Chief Governance Officer<br>Hervé Coureil</th></tr></thead><tbody>
 <tr><td class="decision"><b>1 · Budget allocation</b><span>Distribute transformation funding across AI initiatives.</span></td><td class="mark c">C</td><td class="mark"><span class="a">A</span></td><td class="mark c">C</td><td class="mark r">R</td><td class="mark c">C</td><td class="mark i">I</td></tr>
