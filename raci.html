@@ -1,87 +1,139 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Schneider Electric · Governance RACI</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Schneider Electric · Governance RACI</title>
 <style>
-/* Simple, balanced layout */
-body {
-  font-size: 16px;
-  line-height: 1.5;
+:root{
+  --green:#3DCD58;
+  --green-deep:#0c6b2a;
+  --green-tint:#e4f7e9;
+  --ink:#141414; --muted:#5d6560; --line:#dfe3e0; --bg:#f5f6f6; --card:#fff;
 }
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px 56px}
 
-.wrap {
-  max-width: 1280px;
-  padding: 28px 24px;
+.hero{background:#fff;border-bottom:4px solid var(--green)}
+.hero .wrap{padding-top:22px;padding-bottom:30px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.nav a{font-size:14px;text-decoration:none;padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);color:var(--ink)}
+.nav a:hover{border-color:var(--green)}
+.nav a[aria-current="page"]{background:var(--green);border-color:var(--green);font-weight:700}
+.eyebrow{margin-top:22px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-deep);font-weight:700}
+h1{margin:6px 0 8px;font-size:clamp(30px,5vw,44px);line-height:1.1;letter-spacing:-.01em}
+.sub{margin:0;max-width:660px;font-size:18px;color:var(--muted)}
+
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;margin:26px 0 14px;font-size:14px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend .m{width:28px;height:28px;font-size:14px;border-radius:8px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.table-wrap{overflow-x:auto;border-radius:14px}
+table{width:100%;border-collapse:collapse;min-width:960px}
+thead th{background:#171a18;color:#fff;padding:14px 8px;font-size:15px;line-height:1.25;text-align:center;vertical-align:bottom;font-weight:700;border-bottom:3px solid var(--green)}
+thead th small{display:block;font-weight:400;font-size:12px;color:#c9d1cc;margin-top:3px}
+thead th small.nm{color:var(--green)}
+thead th:first-child{text-align:left;padding-left:20px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+tbody td{padding:16px 8px;border-top:1px solid var(--line);text-align:center;vertical-align:middle}
+tbody tr:nth-child(even) td{background:#fafbfa}
+tbody tr:hover td{background:var(--green-tint)}
+td.decision{text-align:left;padding-left:20px;width:34%;min-width:300px}
+td.decision b{display:flex;align-items:center;gap:10px;font-size:16px}
+td.decision .n{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--green);color:var(--ink);font-size:13px;font-style:normal}
+td.decision span{display:block;margin:4px 0 0 36px;font-size:14px;color:var(--muted);line-height:1.45}
+
+.m{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;font-weight:800;font-size:16px;font-style:normal}
+.A{background:var(--green);color:#06260f;box-shadow:0 0 0 3px #bff0cb}
+.R{background:var(--green-tint);color:var(--green-deep)}
+.C{background:#fff;color:var(--ink);border:1.5px solid #b9c1bc}
+.I{background:transparent;color:#8b948e;border:1.5px dashed #c5ccc7}
+.legend .A{box-shadow:none}
+.swipe{display:none;margin:0 0 8px;font-size:13px;color:var(--muted)}
+
+h2{margin:40px 0 6px;font-size:24px;letter-spacing:-.01em}
+.lead{margin:0 0 16px;color:var(--muted)}
+.roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.role{padding:16px 18px;border-top:4px solid var(--green)}
+.role .ab{font-size:13px;font-weight:800;letter-spacing:.08em;color:var(--green-deep)}
+.role h3{margin:2px 0 2px;font-size:17px;line-height:1.25}
+.role .who{font-size:14px;color:var(--muted);margin-bottom:8px}
+.role p{margin:0;font-size:15px;color:#2b322d}
+
+.foot{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+
+@media (max-width:900px){.roles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){
+  .wrap{padding:0 16px 40px}.nav{justify-content:flex-start}
+  .roles{grid-template-columns:1fr}.sub{font-size:16px}.swipe{display:block}
 }
-
-h1 {
-  font-size: 32px;
+@media print{
+  body{background:#fff}.nav{display:none}
+  .m,thead th,td.decision .n{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card{break-inside:avoid}
 }
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <nav class="nav" aria-label="Site"><a href="index.html">Team</a><a href="roadmap.html">Roadmap</a><a href="raci.html" aria-current="page">RACI</a><a href="dashboard.html">QBR Dashboard</a></nav>
+  <div class="eyebrow">Decision rights · Schneider Electric</div>
+  <h1>Governance RACI</h1>
+  <p class="sub">Six recurring decisions created by the AI transformation portfolio, each with exactly one accountable owner.</p>
+</div></header>
 
-th,
-td {
-  padding: 14px 10px;
-  font-size: 16px;
-  text-align: center;
-  vertical-align: middle;
-}
+<main class="wrap">
+  <div class="legend" aria-label="Legend">
+    <span><i class="m R">R</i> Responsible · does the work</span>
+    <span><i class="m A">A</i> Accountable · owns the final decision</span>
+    <span><i class="m C">C</i> Consulted · before the decision</span>
+    <span><i class="m I">I</i> Informed · after the decision</span>
+  </div>
 
-th {
-  background: #edf8ef;
-  line-height: 1.4;
-}
+  <span class="swipe">Swipe the table sideways to see every role →</span>
+  <div class="card"><div class="table-wrap">
+  <table>
+    <thead><tr>
+      <th scope="col">Recurring decision</th>
+      <th scope="col">CEO<small>Chief Executive Officer</small><small class="nm">Olivier Blum</small></th>
+      <th scope="col">CFO<small>Chief Financial Officer</small><small class="nm">Nathan Fast</small></th>
+      <th scope="col">CDO<small>Chief Digital Officer</small><small class="nm">Peter Weckesser</small></th>
+      <th scope="col">CAIO<small>Chief AI Officer</small><small class="nm">Philippe Rambach</small></th>
+      <th scope="col">EVP<small>Industrial Automation</small><small class="nm">Gwenaelle Huet</small></th>
+      <th scope="col">CGO<small>Chief Governance Officer</small><small class="nm">Hervé Coureil</small></th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="decision"><b><i class="n">1</i>Budget allocation</b><span>Distribute AI transformation funding across the Crawl, Walk and Run initiatives.</span></td>
+        <td><i class="m C">C</i></td><td><i class="m A" aria-label="Accountable">A</i></td><td><i class="m C">C</i></td><td><i class="m R">R</i></td><td><i class="m C">C</i></td><td><i class="m I">I</i></td></tr>
+      <tr><td class="decision"><b><i class="n">2</i>Architecture standards</b><span>Approve or modify AI Hub platform standards for Industrial Copilot and the AI-Native Ecosystem.</span></td>
+        <td><i class="m I">I</i></td><td><i class="m I">I</i></td><td><i class="m A" aria-label="Accountable">A</i></td><td><i class="m R">R</i></td><td><i class="m C">C</i></td><td><i class="m C">C</i></td></tr>
+      <tr><td class="decision"><b><i class="n">3</i>Data governance</b><span>Set data policy for Smart Factory Program with AI Tools, PEP Data Digitization using AI and AI-Driven Sustainability Reporting.</span></td>
+        <td><i class="m I">I</i></td><td><i class="m I">I</i></td><td><i class="m A" aria-label="Accountable">A</i></td><td><i class="m R">R</i></td><td><i class="m C">C</i></td><td><i class="m C">C</i></td></tr>
+      <tr><td class="decision"><b><i class="n">4</i>Initiative prioritization</b><span>Prioritize AI Hub use cases when people or funding are limited.</span></td>
+        <td><i class="m I">I</i></td><td><i class="m C">C</i></td><td><i class="m C">C</i></td><td><i class="m A" aria-label="Accountable">A</i></td><td><i class="m R">R</i></td><td><i class="m C">C</i></td></tr>
+      <tr><td class="decision"><b><i class="n">5</i>Vendors and partnerships</b><span>Approve partners such as Microsoft and Gloat as each partnership renews.</span></td>
+        <td><i class="m I">I</i></td><td><i class="m C">C</i></td><td><i class="m A" aria-label="Accountable">A</i></td><td><i class="m R">R</i></td><td><i class="m C">C</i></td><td><i class="m C">C</i></td></tr>
+      <tr><td class="decision"><b><i class="n">6</i>Industrial Copilot scale gate</b><span>Scale, hold or stop the next Industrial Copilot expansion based on adoption, reliability and impact.</span></td>
+        <td><i class="m I">I</i></td><td><i class="m C">C</i></td><td><i class="m C">C</i></td><td><i class="m R">R</i></td><td><i class="m A" aria-label="Accountable">A</i></td><td><i class="m C">C</i></td></tr>
+    </tbody>
+  </table>
+  </div></div>
 
-th:first-child,
-td:first-child {
-  width: 30%;
-  text-align: left;
-}
+  <h2>Who's who</h2>
+  <p class="lead">What each role means in this matrix.</p>
+  <section class="roles">
+    <article class="card role"><div class="ab">CEO</div><h3>Chief Executive Officer</h3><div class="who">Olivier Blum</div><p>Leads the whole company and sets its overall direction.</p></article>
+    <article class="card role"><div class="ab">CFO</div><h3>Chief Financial Officer</h3><div class="who">Nathan Fast</div><p>Runs the company's finances, including budgets, capital and investment decisions.</p></article>
+    <article class="card role"><div class="ab">CDO</div><h3>Chief Digital Officer</h3><div class="who">Peter Weckesser</div><p>Leads digital strategy and the technology landscape across the company.</p></article>
+    <article class="card role"><div class="ab">CAIO</div><h3>Chief AI Officer</h3><div class="who">Philippe Rambach</div><p>Leads the AI Hub and how AI is built and used across business units.</p></article>
+    <article class="card role"><div class="ab">EVP</div><h3>EVP, Industrial Automation</h3><div class="who">Gwenaelle Huet</div><p>Executive Vice President who runs the Industrial Automation business.</p></article>
+    <article class="card role"><div class="ab">CGO</div><h3>Chief Governance Officer</h3><div class="who">Hervé Coureil</div><p>Oversees the company's governance framework and aligns board, executive and operating levels.</p></article>
+  </section>
 
-th small {
-  display: block;
-  margin-top: 4px;
-  font-size: 13px;
-  font-weight: 400;
-}
-
-.decision span {
-  font-size: 14px;
-}
-
-td.mark {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.rationales {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.why h3 {
-  font-size: 18px;
-}
-
-.why p {
-  font-size: 16px;
-}
-
-@media (max-width: 760px) {
-  .rationales {
-    grid-template-columns: 1fr;
-  }
-}</style></head><body><main class="wrap"><header class="top"><div><div class="eyebrow">Decision rights · Schneider Electric</div><h1>Governance RACI</h1><p>Six recurring decisions created by the AI transformation portfolio.</p></div><nav class="nav"><a href="index.html">Team</a><a href="roadmap.html">Roadmap</a><a href="dashboard.html">QBR Dashboard</a></nav></header>
-<div class="intro"><b>R</b> Responsible · does the work. <b>A</b> Accountable · owns the outcome and final decision. <b>C</b> Consulted before the decision. <b>I</b> Informed after the decision. Each row has exactly one Accountable role. Role titles and named leaders are taken from the group's supplied case draft and should be checked against source dates and company structure.</div>
-<div class="table-wrap"><table><thead><tr><th>Recurring governance decision</th><th>CEO<br>Olivier Blum</th><th>CFO<br>Nathan Fast</th><th>Chief Digital Officer<br>Peter Weckesser</th><th>Chief AI Officer<br>Philippe Rambach</th><th>EVP, Industrial Automation<br>Gwenaelle Huet</th><th>Chief Governance Officer<br>Hervé Coureil</th></tr></thead><tbody>
-<tr><td class="decision"><b>1 · Budget allocation</b><span>Distribute transformation funding across AI initiatives.</span></td><td class="mark c">C</td><td class="mark"><span class="a">A</span></td><td class="mark c">C</td><td class="mark r">R</td><td class="mark c">C</td><td class="mark i">I</td></tr>
-<tr><td class="decision"><b>2 · Architecture standards</b><span>Approve or change shared AI Hub standards affecting Industrial Copilot and AI-Native Ecosystem.</span></td><td class="mark i">I</td><td class="mark i">I</td><td class="mark"><span class="a">A</span></td><td class="mark r">R</td><td class="mark c">C</td><td class="mark c">C</td></tr>
-<tr><td class="decision"><b>3 · Data governance</b><span>Set cross-business data quality, access, and policy for factory and sustainability data.</span></td><td class="mark i">I</td><td class="mark i">I</td><td class="mark"><span class="a">A</span></td><td class="mark r">R</td><td class="mark c">C</td><td class="mark c">C</td></tr>
-<tr><td class="decision"><b>4 · Initiative prioritization</b><span>Choose which Global AI Hub use cases proceed when people or funding are constrained.</span></td><td class="mark i">I</td><td class="mark c">C</td><td class="mark c">C</td><td class="mark"><span class="a">A</span></td><td class="mark r">R</td><td class="mark c">C</td></tr>
-<tr><td class="decision"><b>5 · Vendor and partnership decisions</b><span>Approve and govern key external relationships, including Microsoft and Gloat renewals.</span></td><td class="mark i">I</td><td class="mark c">C</td><td class="mark"><span class="a">A</span></td><td class="mark r">R</td><td class="mark c">C</td><td class="mark c">C</td></tr>
-<tr><td class="decision"><b>6 · Industrial Copilot scale gate</b><span>Scale, hold, or stop the next expansion based on safety, adoption, and impact.</span></td><td class="mark i">I</td><td class="mark c">C</td><td class="mark c">C</td><td class="mark r">R</td><td class="mark"><span class="a">A</span></td><td class="mark c">C</td></tr>
-</tbody></table></div><div class="legend"><span><b class="r">R</b> Responsible</span><span><b style="color:var(--teal)">A</b> Accountable (one per row)</span><span><b class="c">C</b> Consulted before decision</span><span><b class="i">I</b> Informed after decision</span></div>
-<section class="rationales"><article class="why"><h3>1 · CFO accountable for budget allocation</h3><p>The CFO weighs transformation investment against the enterprise capital plan and expected returns across business units. AI and business leaders provide proposals and operating context, while the CFO owns the funding trade-off.</p></article>
-<article class="why"><h3>2 · Chief Digital Officer accountable for architecture</h3><p>Shared standards affect multiple products and platforms. The CDO can resolve cross-platform integration and technology trade-offs; the CAIO is responsible for developing the AI standards proposal.</p></article>
-<article class="why"><h3>3 · Chief Digital Officer accountable for data governance</h3><p>Data quality and access rules span business units and shared technology. The CDO owns the enterprise policy outcome, with the CAIO responsible for applying it to AI use cases and operating leaders consulted on factory needs.</p></article>
-<article class="why"><h3>4 · Chief AI Officer accountable for use-case priority</h3><p>The CAIO coordinates the AI Hub portfolio and can rank use cases against shared AI capacity and strategy. Industrial Automation is responsible for bringing operational needs and implementation constraints into that choice.</p></article>
-<article class="why"><h3>5 · Chief Digital Officer accountable for partnerships</h3><p>External technology partnerships shape enterprise systems, integration, and vendor exposure. The CDO owns the cross-enterprise relationship decision, while AI leadership defines technical needs and Finance and governance leaders advise on terms and controls.</p></article>
-<article class="why"><h3>6 · EVP, Industrial Automation accountable for Copilot scale</h3><p>Expansion affects industrial workflows, customers, and operating performance. The EVP owns the business decision to scale, hold, or stop; the CAIO remains responsible for the AI capability and evidence supporting the gate.</p></article></section>
-<div class="review"><b>Alignment check:</b> Decision 6 is the Industrial Copilot scale gate shown in the dashboard. Budget allocation, architecture standards, and data governance also appear in the dashboard's quarterly decision list. Before submission, verify decision titles and leader names against original company sources for the relevant dates.</div>
-<footer class="foot"><span>Draft based on Member B's supplied matrix and rationales.</span><span><a href="index.html">Team</a> · <a href="roadmap.html">Roadmap</a> · <a href="dashboard.html">Dashboard</a></span></footer></main></body></html>
+  <footer class="foot"><span>Member B · Governance Designer · Tonima Ahmed</span><span><a href="index.html">Team</a> · <a href="roadmap.html">Roadmap</a> · <a href="dashboard.html">Dashboard</a></span></footer>
+</main>
+</body>
+</html>
